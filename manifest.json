@@ -1,0 +1,46 @@
+{
+	"manifest_version":2,
+	"name":"TrueCopy",
+	"description":"Extension to copy all truecaller contents with one click",
+	"version":"1.0.0",
+	"author":"Vijay Sharma",
+
+	"browser_action" : {
+		"default_icon":"images/icon32.png",
+		"default_popup":"popup.html",
+		"default_title":"TrueCopy"
+	},
+
+	"content_scripts":[
+		{
+			"matches":["https://www.truecaller.com/search/in/*"],
+			"js":["content_script.js", "jquery-3.3.1.js"]
+		}
+	],
+
+	"icons": { "16": "images/icon16.png",
+           "32": "images/icon32.png",
+            "64": "images/icon64.png",
+          "128": "images/icon128.png" },
+
+	"background" : {
+	 "scripts" : ["event_script.js"],
+	 "persistent" : false
+	 },
+	
+    "permissions": [
+        "activeTab", "webNavigation"
+     ], 
+
+    "commands": {
+      "_execute_browser_action": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+F",
+          "mac": "MacCtrl+Shift+F"
+        },
+        "description": "Opens popup.html"
+      }
+    }
+  
+
+}
